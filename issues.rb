@@ -37,7 +37,7 @@ def process_issue_array
 	array.each do |a|
 		title = a['title']
 		issues = {}
-		issues['name'] = title
+		issues['name'] = title + ' (#' + a['number'].to_s + ')'
 		title.gsub!(/[^a-zA-Z0-9 ]/, '')
 		title.gsub!(/[ ]/, '_')
 		value = title.downcase
