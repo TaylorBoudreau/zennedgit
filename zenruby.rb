@@ -21,32 +21,34 @@ class Zendesk
 	def self::client
 		@client
 	end
-end
 
-#This gets the current fields in the zendesk ticket field
-def current_fields_array
-	a = Zendesk.new
-	fields = a.client.ticket_fields.find( :id => ZenRuby::Config::TICKET_FIELD_ID )
-	fields = fields[ 'custom_field_options' ]
-	zendesk_fields_array = []
-	fields.each do |a|
-		zendesk_fields_array.push( a.value )
+	#This gets the current fields in the zendesk ticket field
+	def current_fields_array
+		fields = self.client.ticket_fields.find( :id => ZenRuby::Config::TICKET_FIELD_ID )
+		fields = fields[ 'custom_field_options' ]
+		return fields
 	end
-	return zendesk_fields_array
+
+	def make_custom_fields_array(current_fields)
+		zendesk_fields_array = []
+		current_fields.each do |a|
+			zendesk_fields_array.push( a.value )
+		end
+		return zendesk_fields_array
+	end
+
+	#PUT to zendesk to update ticket fields
+	def update_ticket_fields
+		fields = self.client.ticket_fields.find( :id => ZenRuby::Config::TICKET_FIELD_ID )
+		fields['custom_field_options'] = process_issue_array
+		fields.save!
+	end
 end
 
-
-#PUT to zendesk to update ticket fields
-def update_ticket_fields
+begin
 	a = Zendesk.new
-	fields = a.client.ticket_fields.find( :id => ZenRuby::Config::TICKET_FIELD_ID )
-	fields['custom_field_options'] = process_issue_array
-	fields.save!
+	a.update_ticket_fields
+rescue
+	raise 'Something went wrong!'
 end
-
-update_ticket_fields
-
-#current_fields_array
-#Takes a list of titles and creates fields based on list of ticket titles
-
 
