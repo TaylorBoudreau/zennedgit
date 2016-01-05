@@ -1,5 +1,5 @@
 require 'rspec'
-require './zenruby.rb'
+require './lib/zenruby.rb'
 
 
 RSpec.describe Zendesk do 

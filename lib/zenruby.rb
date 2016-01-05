@@ -1,6 +1,6 @@
 require 'zendesk_api'
 require 'logger'
-require './issues.rb'
+require './lib/issues.rb'
 require './config.rb'
 
 
