@@ -17,6 +17,7 @@ RSpec.describe Zendesk do
 		it 'that receives a successful response' do
 			a = Zendesk.new
 			tickets = a.client.tickets.first
+			
 			expect( tickets['id'] ).to eq( 1 )
 		end
 	end
@@ -25,6 +26,7 @@ RSpec.describe Zendesk do
 
 		it 'that creates an array of clean issues' do
 			clean_issues = get_clean_issues_array( @dirty_issue_array )
+			
 			expect( clean_issues ).to eq( @cleaned_issue_array )
 		end
 	end

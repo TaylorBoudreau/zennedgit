@@ -3,7 +3,6 @@ require 'logger'
 require './lib/issues.rb'
 require './config.rb'
 
-
 #Create an authenticated Zendesk client to easily make authenticated requests
 class Zendesk
 	attr_reader :client
@@ -29,19 +28,12 @@ class Zendesk
 		return fields
 	end
 
-	def make_custom_fields_array(current_fields)
-		zendesk_fields_array = []
-		current_fields.each do |a|
-			zendesk_fields_array.push( a.value )
-		end
-		return zendesk_fields_array
-	end
-
 	#PUT to zendesk to update ticket fields
 	def update_ticket_fields
 		fields = self.client.ticket_fields.find( :id => ZenRuby::Config::TICKET_FIELD_ID )
 		fields['custom_field_options'] = process_issue_array
 		fields.save!
+		return fields['custom_field_options']
 	end
 end
 
