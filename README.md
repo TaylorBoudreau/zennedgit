@@ -11,4 +11,4 @@ TODO:
 
 -Pull Zendesk tickets for tag count and analysis outside of Zendesk
 
--More refactoring for better testing
+-Refactoring for better testing
