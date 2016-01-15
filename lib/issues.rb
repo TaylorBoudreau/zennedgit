@@ -45,9 +45,6 @@ def get_issues( url, label )
 	return tagged_issues_array
 end
 
-
-
-
 #Takes an array of git issue hashes and puts what's needed into a santized array of hashes 
 #to display a cleaned title and tag in Zendesk
 def get_clean_issues_array( issue_array )
