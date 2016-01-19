@@ -40,7 +40,7 @@ end
 begin
 	a = Zendesk.new
 	a.update_ticket_fields
-rescue
-	raise 'Something went wrong!'
+rescue Exception => e
+	raise e
 end
 

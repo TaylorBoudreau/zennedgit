@@ -15,7 +15,7 @@ GEM
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
     scrub_rb (1.0.1)
-    zendesk_api (1.13.3)
+    zendesk_api (1.13.4)
       faraday (~> 0.9)
       hashie (>= 1.2, < 4.0, != 3.3.0)
       inflection

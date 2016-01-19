@@ -23,7 +23,7 @@ RSpec.describe Zendesk do
 	end
 
 	describe 'issue processing' do
-		
+
 		it 'that creates an array of clean issues' do
 			clean_issues = get_clean_issues_array( @dirty_issue_array )
 			

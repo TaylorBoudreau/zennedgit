@@ -17,9 +17,21 @@ end
 #Gets issues from github and creates an array of name/value hashes out of the issue titles
 #formatted to PUT the updated fields in Zendesk to update the selection
 def process_issue_array
-	issues_array = get_issues( ZenRuby::Config::GIT_ISSUES_REPO, ZenRuby::Config::GIT_LABEL )
+	issues_array = combine_multiple_repos_issues
+	puts issues_array.inspect
 	cleaned_array = get_clean_issues_array( issues_array )
 	return cleaned_array
+end
+
+#Takes issues tagged from multiple repos and combines them into a single array to use in ticket field
+def combine_multiple_repos_issues
+	all_tagged_issues_array = []
+	repos = ZenRuby::Config::GIT_ISSUES_REPO
+	repos.each do | a |
+		repos_issues = get_issues( a, ZenRuby::Config::GIT_LABEL )
+		all_tagged_issues_array.push( repos_issues ).flatten!
+	end
+	return all_tagged_issues_array
 end
 
 #Get issues from github repo and return the issues with a specific label
@@ -50,12 +62,13 @@ end
 def get_clean_issues_array( issue_array )
 	titles = []
 	issue_array.each do | a |
-		title = a[ 'title' ]
 		issues = {}
+		title = a[ 'title' ]
 		issues[ 'name' ] = title + ' (#' + a[ 'number' ].to_s + ')'
 		title.gsub!(/[^a-zA-Z0-9 ]/, '')
 		title.gsub!(/[ ]/, '_')
 		value = title.downcase
+		
 		issues[ 'value' ] = value
 		titles.push( issues )
 	end
