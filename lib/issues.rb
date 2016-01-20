@@ -66,6 +66,7 @@ def get_clean_issues_array( issue_array )
 		title = a[ 'title' ]
 		url = a[ 'url' ]
 		url = url.gsub(/^https:\/\/github.com\/CozyCo\//, '')
+		url = url.gsub(/\/issue\w/, '')
 		issues[ 'name' ] = title + ' (' + url.to_s + ')'
 		title.gsub!(/[^a-zA-Z0-9 ]/, '')
 		title.gsub!(/[ ]/, '_')
