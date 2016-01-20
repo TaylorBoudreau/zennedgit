@@ -64,7 +64,9 @@ def get_clean_issues_array( issue_array )
 	issue_array.each do | a |
 		issues = {}
 		title = a[ 'title' ]
-		issues[ 'name' ] = title + ' (#' + a[ 'number' ].to_s + ')'
+		url = a[ 'url' ]
+		url = url.gsub(/^https:\/\/github.com\/CozyCo\//, '')
+		issues[ 'name' ] = title + ' (' + url.to_s + ')'
 		title.gsub!(/[^a-zA-Z0-9 ]/, '')
 		title.gsub!(/[ ]/, '_')
 		value = title.downcase

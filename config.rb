@@ -8,6 +8,7 @@ module ZenRuby
 
 		GIT_LABEL = <LABEL_TO_TRACK>
 		GIT_ISSUES_URL = <GIT_ISSUE_API_URL>
+		GIT_ISSUES_REPO = [<GIT_ISSUES_REPO>, <GIT_ISSUES_REPO_2>] #Takes an array of repo owner and repo name like (TaylorBoudreau/Zennedgit)
 		GIT_EMAIL = <YOUR_GIT_USER_EMAIL>
 		GIT_OAUTH_TOKEN = <GIT_TOKEN>
 	end
