@@ -40,8 +40,13 @@ end
 def get_issues( url, label )
 	a = Git.new
 	issues = a.client.issues( url )
-	tagged_issues_array = []
+	cleaned_issues = parse_issue_array( issues, label )
+	return cleaned_issues
+end
 
+
+def parse_issue_array( issues, label )
+	tagged_issues_array = []
 	issues.each do | a |
 		labels = a[ 'labels' ]
 		labels.each do | b |
@@ -54,6 +59,7 @@ def get_issues( url, label )
 			end
 		end
 	end
+
 	return tagged_issues_array
 end
 
@@ -75,6 +81,7 @@ def get_clean_issues_array( issue_array )
 		issues[ 'value' ] = value
 		titles.push( issues )
 	end
+	
 	return titles
 end
 
