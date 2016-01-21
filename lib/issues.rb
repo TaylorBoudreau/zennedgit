@@ -19,7 +19,7 @@ end
 def process_issue_array
 	issues_array = combine_multiple_repos_issues
 	puts issues_array.inspect
-	cleaned_array = get_clean_issues_array( issues_array )
+	cleaned_array = clean_array_for_zendesk( issues_array )
 	return cleaned_array
 end
 
@@ -65,7 +65,7 @@ end
 
 #Takes an array of git issue hashes and puts what's needed into a santized array of hashes 
 #to display a cleaned title and tag in Zendesk
-def get_clean_issues_array( issue_array )
+def clean_array_for_zendesk( issue_array )
 	titles = []
 	issue_array.each do | a |
 		issues = {}
@@ -81,7 +81,7 @@ def get_clean_issues_array( issue_array )
 		issues[ 'value' ] = value
 		titles.push( issues )
 	end
-	
+
 	return titles
 end
 
