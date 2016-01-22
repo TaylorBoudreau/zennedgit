@@ -1,0 +1,12 @@
+/Users/tboudreau/.rbenv/versions/2.2.0/bin/ruby -r ./siteconf20151229-63810-1ntr75p.rb extconf.rb
+checking for main() in -lstdc++... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20151229-63810-1o85fzu
