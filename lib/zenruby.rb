@@ -41,6 +41,3 @@ class Zendesk
 	end
 end
 
-a = Zendesk.new
-puts a.client.tickets.first
-
