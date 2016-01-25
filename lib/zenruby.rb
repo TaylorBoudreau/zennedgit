@@ -35,12 +35,12 @@ class Zendesk
 		fields.save!
 		return fields['custom_field_options']
 	end
+
+	def get_recent_tickets
+
+	end
 end
 
-begin
-	a = Zendesk.new
-	a.update_ticket_fields
-rescue Exception => e
-	raise e
-end
+a = Zendesk.new
+puts a.client.tickets.first
 

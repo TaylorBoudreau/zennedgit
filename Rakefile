@@ -3,7 +3,7 @@ require 'rspec/core/rake_task'
 
 desc 'Updates Zendesk fields'
 task :update_fields do 
-	require './lib/zenruby.rb'
+	require './lib/ticket_field_updator.rb'
 end
 
 RSpec::Core::RakeTask.new(:spec) do |t|
