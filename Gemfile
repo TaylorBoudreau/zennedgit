@@ -8,4 +8,3 @@ gem 'octokit'
 gem 'rake'
 gem 'rspec'
 
-

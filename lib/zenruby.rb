@@ -37,7 +37,9 @@ class Zendesk
 	end
 
 	def get_recent_tickets
-
+		tickets = self.client.tickets
+		tickets.fetch!
+		return tickets
 	end
 end
 

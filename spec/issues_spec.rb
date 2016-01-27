@@ -1,4 +1,5 @@
 require 'rspec'
+require './spec/spec_helper.rb'
 require './lib/zenruby.rb'
 
 
