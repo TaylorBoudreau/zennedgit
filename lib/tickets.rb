@@ -27,15 +27,16 @@ def tag_count( tagged_tickets )
 	return tag_count_array
 end
 
+#This fetches all tickets from 
 def get_tagged_tickets
 	tagged_tickets_array = []
-	a = Zendesk.new
+	a = ZennedGit.new
 	recent_ticket_array = a.get_recent_tickets
 	recent_ticket_array.fetch!
 	recent_ticket_array.each do | ticket | 
 		tagged_ticket = {}
 		tickets_fields = ticket.custom_fields
-		tickets_fields.each do |a|
+		tickets_fields.each do | a |
 			if !a.value.empty?
 				tagged_ticket[ 'id' ] = ticket.id			
 				tagged_ticket[ 'tag' ] = a.value
@@ -47,6 +48,7 @@ def get_tagged_tickets
 	return tagged_tickets_array
 end
 
+#Creates a new hash with the tag, count of 1, and the id of the ticket
 def create_count_hash( tag, ticket_id)
 	count_hash = {}
 	count_hash[ 'tag' ] = tag
@@ -70,7 +72,4 @@ def tag_count_exists?( tag, count_array )
 	
 	return return_hash
 end
-
-a = get_tagged_ticket_count
-puts a.inspect
 

@@ -7,4 +7,5 @@ gem 'logger'
 gem 'octokit'
 gem 'rake'
 gem 'rspec'
+gem 'dotenv'
 

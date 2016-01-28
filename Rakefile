@@ -1,9 +1,14 @@
 require 'rake'
+require 'dotenv'
 require 'rspec/core/rake_task'
+require './lib/zenruby.rb'
+
+Dotenv.load
 
 desc 'Updates Zendesk fields'
 task :update_fields do 
-	require './lib/ticket_field_updator.rb'
+	a = ZennedGit.new
+	a.update_ticket_fields
 end
 
 RSpec::Core::RakeTask.new(:spec) do |t|
