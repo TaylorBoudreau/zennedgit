@@ -1,7 +1,6 @@
 require 'zendesk_api'
 require 'logger'
 require './lib/issues.rb'
-require './config.rb'
 
 #Create an authenticated Zendesk client to easily make authenticated requests
 class ZennedGit
