@@ -4,7 +4,7 @@ class Git
 	attr_reader :client
 
 	def initialize 
-		@client = Octokit::Client.new(:access_token => ENV[ "GIT_OAUTH_TOKEN" ] )
+		@client = Octokit::Client.new( :access_token => ENV[ "GIT_OAUTH_TOKEN" ] )
 		user = client.user
 		user.login
 	end
@@ -79,9 +79,12 @@ class IssueProcessor
 			url = a[ 'url' ]
 			url = url.gsub(/^https:\/\/github.com\/CozyCo\//, '')
 			url = url.gsub(/\/issue\w/, '')
-			issues[ 'name' ] = title + ' (' + url.to_s + ')'
+			url = url.to_s
+			issues[ 'name' ] = title + ' (' + url + ')'
+			url.gsub!(/\//, '_')
 			title.gsub!(/[^a-zA-Z0-9 ]/, '')
 			title.gsub!(/[ ]/, '_')
+			title = title + '_' + url
 			value = title.downcase
 			
 			issues[ 'value' ] = value

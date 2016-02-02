@@ -8,8 +8,7 @@ RSpec.describe ZennedGit do
 		@dirty_issue_array = [{"url"=>"https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/issues/4", "title"=>"Applicants do a thing from previous employers so it's automatically given a number somewhere", "number"=>4},
 							 {"url"=>"https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/issues/1", "title"=>"This look a bit janky.", "number"=>1}]
 
-		@cleaned_issue_array = [{"name"=>"Applicants do a thing from previous employers so it's automatically given a number somewhere (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/4)", "value"=>"applicants_do_a_thing_from_previous_employers_so_its_automatically_given_a_number_somewhere"},
-								{"name"=>"This look a bit janky. (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/1)", "value"=>"this_look_a_bit_janky"}]
+		@cleaned_issue_array = [{"name"=>"Applicants do a thing from previous employers so it's automatically given a number somewhere (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/4)", "value"=>"applicants_do_a_thing_from_previous_employers_so_its_automatically_given_a_number_somewhere_https:__github.com_taylorboudreau_taylorboudreau.github.io_4"}, {"name"=>"This look a bit janky. (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/1)", "value"=>"this_look_a_bit_janky_https:__github.com_taylorboudreau_taylorboudreau.github.io_1"}]
 	end
 
 	describe 'make an authenticated request to Zendesk' do
@@ -31,8 +30,7 @@ RSpec.describe IssueProcessor do
 		@dirty_issue_array = [{"url"=>"https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/issues/4", "title"=>"Applicants do a thing from previous employers so it's automatically given a number somewhere", "number"=>4},
 							 {"url"=>"https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/issues/1", "title"=>"This look a bit janky.", "number"=>1}]
 
-		@cleaned_issue_array = [{"name"=>"Applicants do a thing from previous employers so it's automatically given a number somewhere (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/4)", "value"=>"applicants_do_a_thing_from_previous_employers_so_its_automatically_given_a_number_somewhere"},
-								{"name"=>"This look a bit janky. (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/1)", "value"=>"this_look_a_bit_janky"}]
+		@cleaned_issue_array = [{"name"=>"Applicants do a thing from previous employers so it's automatically given a number somewhere (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/4)", "value"=>"applicants_do_a_thing_from_previous_employers_so_its_automatically_given_a_number_somewhere_https:__github.com_taylorboudreau_taylorboudreau.github.io_4"}, {"name"=>"This look a bit janky. (https://github.com/TaylorBoudreau/TaylorBoudreau.github.io/1)", "value"=>"this_look_a_bit_janky_https:__github.com_taylorboudreau_taylorboudreau.github.io_1"}]
 	end
 
 	describe 'issue processing' do
