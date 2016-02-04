@@ -1,15 +1,15 @@
 require 'octokit'
 
 class Git
-	attr_reader :client
+	attr_accessor :client
 
 	def initialize 
 		@client = Octokit::Client.new( :access_token => ENV[ "GIT_OAUTH_TOKEN" ] )
-		user = client.user
+
+		user = @client.user
 		user.login
 	end
 end
-
 
 class IssueProcessor
 	attr_reader :git
@@ -45,8 +45,9 @@ class IssueProcessor
 	#This is separated from the cleaned issues as it may be used to provide a useful
 	#user facing display of issues
 	def get_issues( url, label )
-		issues = @git.client.issues( url )
+		issues = @git.client.issues( url, :per_page => 100 )
 		cleaned_issues = parse_issue_array( issues, label )
+		puts cleaned_issues.inspect
 		return cleaned_issues
 	end
 
