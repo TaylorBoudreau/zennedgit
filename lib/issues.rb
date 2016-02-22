@@ -51,7 +51,7 @@ class IssueProcessor
 		return cleaned_issues
 	end
 
-
+	#Make a pretty issue array to use in Zendesk display
 	def parse_issue_array( issues, label )
 		tagged_issues_array = []
 		issues.each do | a |
